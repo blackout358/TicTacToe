@@ -11,6 +11,21 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  String turn = "O";
+  void setTurn(String turn) {
+    turn == "O"
+        ? setState(
+            () {
+              turn = "X";
+            },
+          )
+        : setState(
+            () {
+              turn = "O";
+            },
+          );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,8 +36,17 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           Container(
             height: 500,
-            child: ButtonGrid(),
+            child: ButtonGrid(
+              turn: turn,
+              onPressed: (String value) {},
+            ),
           ),
+          Text(
+            turn,
+            style: TextStyle(
+              fontSize: 40,
+            ),
+          )
         ],
       ),
     );
