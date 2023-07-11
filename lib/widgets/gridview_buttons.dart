@@ -4,27 +4,31 @@ import 'package:tictactoe/widgets/app_button.dart';
 class ButtonGrid extends StatefulWidget {
   final ValueChanged<String> onPressed;
   String turn;
+  List<String> displayXO;
   ButtonGrid({
     super.key,
     required this.turn,
     required this.onPressed,
+    required this.displayXO,
   });
 
   @override
   State<ButtonGrid> createState() => _ButtonGridState();
 }
 
-List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
+// List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
 
 class _ButtonGridState extends State<ButtonGrid> {
   void setXO(int index) {
     setState(() {
-      if (displayXO[index].isEmpty && widget.turn == "X") {
-        displayXO[index] = widget.turn;
+      if (widget.displayXO[index].isEmpty && widget.turn == "X") {
+        widget.displayXO[index] = widget.turn;
         widget.turn = "O";
-      } else if (displayXO[index].isEmpty && widget.turn == "O") {
-        displayXO[index] = widget.turn;
+      } else if (widget.displayXO[index].isEmpty && widget.turn == "O") {
+        widget.displayXO[index] = widget.turn;
         widget.turn = "X";
+      } else {
+        widget.displayXO[index] = ":(";
       }
     });
   }
@@ -41,14 +45,14 @@ class _ButtonGridState extends State<ButtonGrid> {
           foregroundColor: Colors.red,
           backgroundColor: Colors.white,
           borderColor: Colors.black,
-          text: displayXO[index],
+          text: widget.displayXO[index],
           width: 10,
           height: 10,
           borderRadius: 20,
           onPressed: () {
-            print(index);
+            print(widget.turn);
             setXO(index);
-            widget.onPressed(displayXO[index]);
+            widget.onPressed(widget.displayXO[index]);
           },
         );
       },

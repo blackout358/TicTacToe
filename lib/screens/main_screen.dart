@@ -11,19 +11,21 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  String turn = "O";
+  String turn = "X";
+  List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
+
   void setTurn(String turn) {
-    turn == "O"
-        ? setState(
-            () {
-              turn = "X";
-            },
-          )
-        : setState(
-            () {
-              turn = "O";
-            },
-          );
+    // turn == "O"
+    //     ? setState(
+    //         () {
+    //           turn = "X";
+    //         },
+    //       )
+    //     : setState(
+    //         () {
+    //           turn = "O";
+    //         },
+    //       );
   }
 
   @override
@@ -38,14 +40,57 @@ class _MainScreenState extends State<MainScreen> {
             height: 500,
             child: ButtonGrid(
               turn: turn,
-              onPressed: (String value) {},
+              onPressed: (String value) {
+                setTurn(value);
+              },
+              displayXO: displayXO,
             ),
           ),
-          Text(
-            turn,
-            style: TextStyle(
-              fontSize: 40,
-            ),
+          Row(
+            children: [
+              AppButtons(
+                foregroundColor: Colors.red,
+                backgroundColor: Colors.white,
+                borderColor: Colors.black,
+                text: "X",
+                width: 90,
+                height: 90,
+                borderRadius: 15,
+                onPressed: () {
+                  setState(() {
+                    turn = "X";
+                  });
+                },
+              ),
+              AppButtons(
+                foregroundColor: Colors.red,
+                backgroundColor: Colors.white,
+                borderColor: Colors.black,
+                text: turn,
+                width: 90,
+                height: 90,
+                borderRadius: 15,
+                onPressed: () {
+                  setState(() {
+                    displayXO = ['', '', '', '', '', '', '', '', ''];
+                  });
+                },
+              ),
+              AppButtons(
+                foregroundColor: Colors.red,
+                backgroundColor: Colors.white,
+                borderColor: Colors.black,
+                text: "O",
+                width: 90,
+                height: 90,
+                borderRadius: 15,
+                onPressed: () {
+                  setState(() {
+                    turn = "O";
+                  });
+                },
+              ),
+            ],
           )
         ],
       ),
