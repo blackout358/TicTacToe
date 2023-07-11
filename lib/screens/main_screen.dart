@@ -14,18 +14,18 @@ class _MainScreenState extends State<MainScreen> {
   String turn = "X";
   List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
 
-  void setTurn(String turn) {
-    // turn == "O"
-    //     ? setState(
-    //         () {
-    //           turn = "X";
-    //         },
-    //       )
-    //     : setState(
-    //         () {
-    //           turn = "O";
-    //         },
-    //       );
+  void setTurn(String value) {
+    value == "O"
+        ? setState(
+            () {
+              turn = "X";
+            },
+          )
+        : setState(
+            () {
+              turn = "O";
+            },
+          );
   }
 
   @override
