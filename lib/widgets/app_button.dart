@@ -23,49 +23,41 @@ class AppButtons extends StatelessWidget {
       required this.onPressed});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(2),
+    return SizedBox(
       width: width,
       height: height,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        // gradient: const LinearGradient(
-        //   colors: [Color(0xFFFF5B94), Color(0xFF8441A4)],
-        //   begin: Alignment.topLeft,
-        //   end: Alignment.bottomRight,
-        // ),
-        borderRadius: BorderRadius.circular(borderRadius.toDouble()),
-        border: Border.all(
-          color: borderColor,
-          width: 1.0,
+      child: Container(
+        margin: EdgeInsets.all(5),
+        // width: width,
+        // height: height,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(borderRadius.toDouble()),
+          border: Border.all(
+            color: borderColor,
+            width: 1.0,
+          ),
         ),
-      ),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          // margin: EdgeInsets.all(2),
-          // padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-          // minimumSize: Size.fromHeight(height),
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          foregroundColor: foregroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              borderRadius.toDouble(),
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            // minimumSize: Size.fromWidth(width).height(height),
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            foregroundColor: foregroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                borderRadius.toDouble(),
+              ),
+            ),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 0.04 * MediaQuery.of(context).size.height,
             ),
           ),
         ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 0.04 * MediaQuery.of(context).size.height,
-          ),
-        ),
-        // icon: Icon(
-        //   icon,
-        //   color: Colors.lime,
-        //   // size: 20,
-        // ),
       ),
     );
   }
