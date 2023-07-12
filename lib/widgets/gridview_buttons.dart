@@ -50,7 +50,7 @@ class _ButtonGridState extends State<ButtonGrid> {
           height: 10,
           borderRadius: 20,
           onPressed: () {
-            print(widget.turn);
+            print(index);
             setXO(index);
             widget.onPressed(widget.displayXO[index]);
           },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/widgets/app_button.dart';
-
+import 'package:tictactoe/logic/win_checker.dart';
 import '../widgets/gridview_buttons.dart';
 
 class MainScreen extends StatefulWidget {
@@ -12,6 +12,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   String turn = "X";
+  String winner = "";
   List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
 
   void setTurn(String value) {
@@ -42,6 +43,9 @@ class _MainScreenState extends State<MainScreen> {
               turn: turn,
               onPressed: (String value) {
                 setTurn(value);
+                setState(() {
+                  winner = WinnerChecker.checkWinner(displayXO);
+                });
               },
               displayXO: displayXO,
             ),
@@ -91,7 +95,14 @@ class _MainScreenState extends State<MainScreen> {
                 },
               ),
             ],
-          )
+          ),
+          Text(
+            winner,
+            style: TextStyle(
+              fontSize: 50,
+              color: Colors.blue[400],
+            ),
+          ),
         ],
       ),
     );
