@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/logic/gameboard.dart';
 import 'package:tictactoe/logic/win_checker.dart';
 import 'package:tictactoe/widgets/app_button.dart';
 
@@ -7,12 +8,14 @@ class ButtonGrid extends StatefulWidget {
   String turn;
   String winner;
   List<String> displayXO;
+  GameBoard myGameBoard;
   ButtonGrid({
     super.key,
     required this.turn,
     required this.onPressed,
     required this.displayXO,
     required this.winner,
+    required this.myGameBoard,
   });
 
   @override
@@ -22,27 +25,7 @@ class ButtonGrid extends StatefulWidget {
 // List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
 
 class _ButtonGridState extends State<ButtonGrid> {
-  void clearWinner() {
-    setState(() {
-      if (widget.winner.isNotEmpty) {
-        widget.displayXO = ['', '', '', '', '', '', '', '', ''];
-      }
-    });
-  }
-
-  void setXO(int index) {
-    if (widget.displayXO[index].isEmpty && widget.turn == "X") {
-      widget.displayXO[index] = widget.turn;
-      widget.turn = "O";
-    } else if (widget.displayXO[index].isEmpty && widget.turn == "O") {
-      widget.displayXO[index] = widget.turn;
-      widget.turn = "X";
-    }
-    ;
-    setState(() {});
-
-    // });
-  }
+  bool hasWon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,20 +39,24 @@ class _ButtonGridState extends State<ButtonGrid> {
           foregroundColor: Colors.red,
           backgroundColor: Colors.grey[300]!,
           borderColor: Colors.black,
-          text: widget.displayXO[index],
+          text: widget.myGameBoard.getGridValue(index),
           width: 10,
           height: 10,
           borderRadius: 35,
           onPressed: () {
-            // print(index);
-
             setState(() {
-              setXO(index);
+              if (hasWon) {
+                widget.myGameBoard.clearBoard();
+                hasWon = !hasWon;
+              }
+              widget.myGameBoard.setXO(index);
+              var (didWin, whoWin) = widget.myGameBoard.isWinner();
+              if (didWin) {
+                hasWon = true;
+                widget.winner = "$whoWin is the winner!";
+              }
+              print(widget.myGameBoard.getGrid());
             });
-            checkWinner();
-            clearWinner();
-            // checkWinner();
-            widget.onPressed(widget.displayXO[index]);
           },
         );
       },

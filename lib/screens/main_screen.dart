@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/logic/gameboard.dart';
 import 'package:tictactoe/widgets/app_button.dart';
 import 'package:tictactoe/logic/win_checker.dart';
 import '../widgets/gridview_buttons.dart';
@@ -14,6 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   String turn = "X";
   String winner = "";
   List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
+  GameBoard myGameBoard = GameBoard();
 
   void setTurn(String value) {
     value == "O"
@@ -49,19 +51,10 @@ class _MainScreenState extends State<MainScreen> {
               turn: turn,
               onPressed: (String value) {
                 setTurn(value);
-                // winner = WinnerChecker.checkWinner(displayXO);
-                // setState(() {
-                // winner = WinnerChecker.checkWinner(displayXO);
-                //   if (winner.isNotEmpty) {
-                //     displayXO = ['', '', '', '', '', '', '', '', ''];
-                //   }
-                // });
-                // if (winner.isNotEmpty) {
-                //   displayXO = ['', '', '', '', '', '', '', '', ''];
-                // }
               },
               displayXO: displayXO,
               winner: winner,
+              myGameBoard: myGameBoard,
             ),
           ),
           Row(
@@ -92,8 +85,7 @@ class _MainScreenState extends State<MainScreen> {
                 borderRadius: 15,
                 onPressed: () {
                   setState(() {
-                    displayXO = ['', '', '', '', '', '', '', '', ''];
-                    winner = "";
+                    myGameBoard.clearBoard();
                   });
                 },
               ),

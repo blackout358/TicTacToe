@@ -7,6 +7,14 @@ class GameBoard {
     turn = 'X';
   }
 
+  String getGridValue(int index) {
+    return grid[index];
+  }
+
+  List<String> getGrid() {
+    return grid;
+  }
+
   void setXO(int index) {
     if (grid[index].isEmpty) {
       grid[index] = turn;
