@@ -1,10 +1,12 @@
 class GameBoard {
   late List<String> grid;
   late String turn;
+  late String winner;
 
   GameBoard() {
     grid = List<String>.filled(9, '');
     turn = 'X';
+    winner = "";
   }
 
   String getGridValue(int index) {
@@ -66,9 +68,11 @@ class GameBoard {
     }
   }
 
-  // static setXO(int index) {}
+  void setWinner(String victor) {
+    winner = victor;
+  }
 
-  // clear winner// -> if winner full -> clear
-  // setXO
-  // check winner//
+  String getWinner() {
+    return winner;
+  }
 }

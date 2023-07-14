@@ -22,8 +22,6 @@ class ButtonGrid extends StatefulWidget {
   State<ButtonGrid> createState() => _ButtonGridState();
 }
 
-// List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
-
 class _ButtonGridState extends State<ButtonGrid> {
   bool hasWon = false;
 
@@ -47,24 +45,22 @@ class _ButtonGridState extends State<ButtonGrid> {
             setState(() {
               if (hasWon) {
                 widget.myGameBoard.clearBoard();
+                widget.myGameBoard.setWinner("");
                 hasWon = !hasWon;
               }
               widget.myGameBoard.setXO(index);
               var (didWin, whoWin) = widget.myGameBoard.isWinner();
+              print(widget.myGameBoard.getGrid());
               if (didWin) {
                 hasWon = true;
-                widget.winner = "$whoWin is the winner!";
+                widget.myGameBoard.setWinner("$whoWin is the winner!");
+                print(widget.myGameBoard.getWinner());
               }
-              print(widget.myGameBoard.getGrid());
+              // print(widget.myGameBoard.getGrid());
             });
           },
         );
       },
     );
-  }
-
-  void checkWinner() {
-    widget.winner = WinnerChecker.checkWinner(widget.displayXO);
-    setState(() {});
   }
 }

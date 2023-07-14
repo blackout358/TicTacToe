@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/logic/gameboard.dart';
 import 'package:tictactoe/widgets/app_button.dart';
-import 'package:tictactoe/logic/win_checker.dart';
 import '../widgets/gridview_buttons.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,25 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
   GameBoard myGameBoard = GameBoard();
 
-  void setTurn(String value) {
-    value == "O"
-        ? setState(
-            () {
-              turn = "X";
-            },
-          )
-        : setState(
-            () {
-              turn = "O";
-            },
-          );
-    // if (winner.isNotEmpty) {
-    //   setState(() {
-    //     displayXO = ['', '', '', '', '', '', '', '', ''];
-    //   });
-    // }
-    print(winner);
-  }
+  void setTurn(String value) {}
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
             ],
           ),
           Text(
-            winner,
+            myGameBoard.getWinner(),
             style: TextStyle(
               fontSize: 50,
               color: Colors.blue[400],
