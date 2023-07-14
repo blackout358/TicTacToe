@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/logic/win_checker.dart';
 import 'package:tictactoe/widgets/app_button.dart';
 
 class ButtonGrid extends StatefulWidget {
   final ValueChanged<String> onPressed;
   String turn;
+  String winner;
   List<String> displayXO;
   ButtonGrid({
     super.key,
     required this.turn,
     required this.onPressed,
     required this.displayXO,
+    required this.winner,
   });
 
   @override
@@ -19,18 +22,26 @@ class ButtonGrid extends StatefulWidget {
 // List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
 
 class _ButtonGridState extends State<ButtonGrid> {
-  void setXO(int index) {
+  void clearWinner() {
     setState(() {
-      if (widget.displayXO[index].isEmpty && widget.turn == "X") {
-        widget.displayXO[index] = widget.turn;
-        widget.turn = "O";
-      } else if (widget.displayXO[index].isEmpty && widget.turn == "O") {
-        widget.displayXO[index] = widget.turn;
-        widget.turn = "X";
-      } else {
-        widget.displayXO[index] = ":(";
+      if (widget.winner.isNotEmpty) {
+        widget.displayXO = ['', '', '', '', '', '', '', '', ''];
       }
     });
+  }
+
+  void setXO(int index) {
+    if (widget.displayXO[index].isEmpty && widget.turn == "X") {
+      widget.displayXO[index] = widget.turn;
+      widget.turn = "O";
+    } else if (widget.displayXO[index].isEmpty && widget.turn == "O") {
+      widget.displayXO[index] = widget.turn;
+      widget.turn = "X";
+    }
+    ;
+    setState(() {});
+
+    // });
   }
 
   @override
@@ -43,19 +54,30 @@ class _ButtonGridState extends State<ButtonGrid> {
       itemBuilder: (BuildContext context, int index) {
         return AppButtons(
           foregroundColor: Colors.red,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.grey[300]!,
           borderColor: Colors.black,
           text: widget.displayXO[index],
           width: 10,
           height: 10,
-          borderRadius: 20,
+          borderRadius: 35,
           onPressed: () {
-            print(index);
-            setXO(index);
+            // print(index);
+
+            setState(() {
+              setXO(index);
+            });
+            checkWinner();
+            clearWinner();
+            // checkWinner();
             widget.onPressed(widget.displayXO[index]);
           },
         );
       },
     );
+  }
+
+  void checkWinner() {
+    widget.winner = WinnerChecker.checkWinner(widget.displayXO);
+    setState(() {});
   }
 }

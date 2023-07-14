@@ -27,6 +27,12 @@ class _MainScreenState extends State<MainScreen> {
               turn = "O";
             },
           );
+    // if (winner.isNotEmpty) {
+    //   setState(() {
+    //     displayXO = ['', '', '', '', '', '', '', '', ''];
+    //   });
+    // }
+    print(winner);
   }
 
   @override
@@ -43,14 +49,24 @@ class _MainScreenState extends State<MainScreen> {
               turn: turn,
               onPressed: (String value) {
                 setTurn(value);
-                setState(() {
-                  winner = WinnerChecker.checkWinner(displayXO);
-                });
+                // winner = WinnerChecker.checkWinner(displayXO);
+                // setState(() {
+                // winner = WinnerChecker.checkWinner(displayXO);
+                //   if (winner.isNotEmpty) {
+                //     displayXO = ['', '', '', '', '', '', '', '', ''];
+                //   }
+                // });
+                // if (winner.isNotEmpty) {
+                //   displayXO = ['', '', '', '', '', '', '', '', ''];
+                // }
               },
               displayXO: displayXO,
+              winner: winner,
             ),
           ),
           Row(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AppButtons(
                 foregroundColor: Colors.red,
@@ -77,6 +93,7 @@ class _MainScreenState extends State<MainScreen> {
                 onPressed: () {
                   setState(() {
                     displayXO = ['', '', '', '', '', '', '', '', ''];
+                    winner = "";
                   });
                 },
               ),
