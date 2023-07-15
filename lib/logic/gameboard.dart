@@ -32,39 +32,48 @@ class GameBoard {
     turn == "O" ? turn = "X" : turn = "O";
   }
 
-  (bool, String) isWinner() {
+  bool isWinner() {
     if (grid[0] == grid[1] && grid[2] == grid[0] && grid[0] != '') {
-      return (true, grid[0]);
+      setWinner("${grid[0]} is the winner");
+      return true;
     }
     // Check row 2
     else if (grid[3] == grid[4] && grid[5] == grid[3] && grid[3] != '') {
-      return (true, grid[3]);
+      setWinner("${grid[3]} is the winner");
+      return true;
     }
     // Check row 3
     else if (grid[6] == grid[7] && grid[7] == grid[8] && grid[6] != '') {
-      return (true, grid[6]);
+      setWinner("${grid[6]} is the winner");
+      return true;
     }
     // Check column 1
     else if (grid[0] == grid[3] && grid[0] == grid[6] && grid[0] != '') {
-      return (true, grid[0]);
+      setWinner("${grid[0]} is the winner");
+      return true;
     }
     // Check column 2
     else if (grid[1] == grid[4] && grid[4] == grid[7] && grid[1] != '') {
-      return (true, grid[1]);
+      setWinner("${grid[1]} is the winner");
+      return true;
     }
     // Check column 3
     else if (grid[2] == grid[5] && grid[5] == grid[8] && grid[2] != '') {
-      return (true, grid[2]);
+      setWinner("${grid[2]} is the winner");
+      return true;
     }
     // Check diagonal
     else if (grid[0] == grid[4] && grid[4] == grid[8] && grid[0] != '') {
-      return (true, grid[0]);
+      setWinner("${grid[0]} is the winner");
+      return true;
     }
     // Check diagonal
     else if (grid[2] == grid[4] && grid[4] == grid[6] && grid[2] != '') {
-      return (true, grid[2]);
+      setWinner("${grid[0]} is the winner");
+      return true;
     } else {
-      return (false, "");
+      setWinner("");
+      return false;
     }
   }
 

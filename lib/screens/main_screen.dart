@@ -16,7 +16,11 @@ class _MainScreenState extends State<MainScreen> {
   List<String> displayXO = ['', '', '', '', '', '', '', '', ''];
   GameBoard myGameBoard = GameBoard();
 
-  void setTurn(String value) {}
+  void setTurn(String value) {
+    setState(() {
+      winner = myGameBoard.getWinner();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,9 @@ class _MainScreenState extends State<MainScreen> {
               turn: turn,
               onPressed: (String value) {
                 setTurn(value);
+                setState(() {
+                  winner = myGameBoard.getWinner();
+                });
               },
               displayXO: displayXO,
               winner: winner,
@@ -79,9 +86,8 @@ class _MainScreenState extends State<MainScreen> {
                 height: 90,
                 borderRadius: 15,
                 onPressed: () {
-                  setState(() {
-                    turn = "O";
-                  });
+                  print(myGameBoard.getWinner());
+                  print(winner);
                 },
               ),
             ],
