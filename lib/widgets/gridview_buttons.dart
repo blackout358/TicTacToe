@@ -4,11 +4,12 @@ import 'package:tictactoe/logic/win_checker.dart';
 import 'package:tictactoe/widgets/app_button.dart';
 
 class ButtonGrid extends StatefulWidget {
-  final ValueChanged<String> onPressed;
+  final VoidCallback onPressed;
   String turn;
   String winner;
   List<String> displayXO;
   GameBoard myGameBoard;
+  final Function(String) updateWinner;
   ButtonGrid({
     super.key,
     required this.turn,
@@ -16,6 +17,7 @@ class ButtonGrid extends StatefulWidget {
     required this.displayXO,
     required this.winner,
     required this.myGameBoard,
+    required this.updateWinner,
   });
 
   @override
@@ -45,7 +47,9 @@ class _ButtonGridState extends State<ButtonGrid> {
             setState(() {
               if (hasWon) {
                 widget.myGameBoard.clearBoard();
-                // widget.myGameBoard.setWinner("");
+                widget.myGameBoard.setWinner("");
+                widget.updateWinner(widget.winner);
+                widget.winner = "";
                 hasWon = !hasWon;
               }
               widget.myGameBoard.setXO(index);
@@ -54,7 +58,9 @@ class _ButtonGridState extends State<ButtonGrid> {
               if (didWin) {
                 hasWon = true;
                 widget.winner = widget.myGameBoard.getWinner();
-                print(widget.myGameBoard.getWinner());
+                widget.updateWinner(widget.winner);
+                print("myGameBoard: ${widget.myGameBoard.getWinner()}");
+                print("Winner: ${widget.winner}");
               }
               // print(widget.myGameBoard.getGrid());
             });

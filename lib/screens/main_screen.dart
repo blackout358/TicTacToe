@@ -22,6 +22,12 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  void updateWinner(String winner) {
+    setState(() {
+      this.winner = winner;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,15 +40,11 @@ class _MainScreenState extends State<MainScreen> {
             height: 500,
             child: ButtonGrid(
               turn: turn,
-              onPressed: (String value) {
-                setTurn(value);
-                setState(() {
-                  winner = myGameBoard.getWinner();
-                });
-              },
+              onPressed: () {},
               displayXO: displayXO,
               winner: winner,
               myGameBoard: myGameBoard,
+              updateWinner: updateWinner,
             ),
           ),
           Row(
@@ -74,6 +76,8 @@ class _MainScreenState extends State<MainScreen> {
                 onPressed: () {
                   setState(() {
                     myGameBoard.clearBoard();
+                    myGameBoard.setWinner("");
+                    updateWinner("");
                   });
                 },
               ),
@@ -86,8 +90,8 @@ class _MainScreenState extends State<MainScreen> {
                 height: 90,
                 borderRadius: 15,
                 onPressed: () {
-                  print(myGameBoard.getWinner());
-                  print(winner);
+                  print("myGameBoard: ${myGameBoard.getWinner()}");
+                  print("Winner: $winner");
                 },
               ),
             ],
