@@ -19,7 +19,7 @@ class _WinnerTextState extends State<WinnerText> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      widget.winner,
+      widget.myGameBoard.getWinner(),
       style: TextStyle(
         fontSize: 50,
         color: Colors.blue[400],

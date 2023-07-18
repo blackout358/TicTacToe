@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/logic/gameboard.dart';
 import 'package:tictactoe/widgets/app_button.dart';
+import 'package:tictactoe/widgets/winner_text.dart';
 import '../widgets/gridview_buttons.dart';
 
 class MainScreen extends StatefulWidget {
@@ -96,13 +97,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ],
           ),
-          Text(
-            myGameBoard.getWinner(),
-            style: TextStyle(
-              fontSize: 50,
-              color: Colors.blue[400],
-            ),
-          ),
+          WinnerText(myGameBoard: myGameBoard, winner: winner),
         ],
       ),
     );

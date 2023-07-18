@@ -31,6 +31,10 @@ class WinnerChecker {
     // Check diagonal
     else if (data[2] == data[4] && data[4] == data[6] && data[2] != '') {
       return "${data[2]} is the winner";
+    }
+    // Check Tie
+    else if (data.every((element) => element.isNotEmpty)) {
+      return "Tie";
     } else {
       return "";
     }

@@ -69,7 +69,11 @@ class GameBoard {
     }
     // Check diagonal
     else if (grid[2] == grid[4] && grid[4] == grid[6] && grid[2] != '') {
-      setWinner("${grid[0]} is the winner");
+      setWinner("${grid[2]} is the winner");
+      return true;
+    } // Check tie
+    else if (grid.every((element) => element.isNotEmpty)) {
+      setWinner("Tie");
       return true;
     } else {
       setWinner("");
