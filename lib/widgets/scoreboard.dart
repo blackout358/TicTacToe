@@ -35,22 +35,23 @@ class _ScoreboardState extends State<Scoreboard> {
               widget.myGameBoard.setWinner("X");
             });
           },
+          font: 0.04,
         ),
-        AppButtons(
-          foregroundColor: Colors.purple[200]!,
-          backgroundColor: Color(0xFF757575),
-          borderColor: Colors.black,
-          text: widget.myGameBoard.getTurn(),
-          width: 90,
-          height: 90,
-          borderRadius: 15,
-          onPressed: () {
-            setState(() {
-              widget.myGameBoard.setWinner("X");
-            });
-          },
-        ),
-        // Padding(padding: EdgeInsets.all(15)),
+        // AppButtons(
+        //   foregroundColor: Colors.purple[200]!,
+        //   backgroundColor: Color(0xFF757575),
+        //   borderColor: Colors.black,
+        //   text: widget.myGameBoard.getTurn(),
+        //   width: 90,
+        //   height: 90,
+        //   borderRadius: 15,
+        //   onPressed: () {
+        //     setState(() {
+        //       widget.myGameBoard.setWinner("X");
+        //     });
+        //   },
+        // ),
+        Padding(padding: EdgeInsets.symmetric(horizontal: 20)),
         AppButtons(
           foregroundColor: widget.myGameBoard.getTurn() == "O"
               ? Colors.red[300]!
@@ -68,6 +69,7 @@ class _ScoreboardState extends State<Scoreboard> {
               widget.myGameBoard.setWinner("X");
             });
           },
+          font: 0.04,
         ),
       ],
     );

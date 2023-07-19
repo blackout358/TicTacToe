@@ -66,6 +66,7 @@ class _ButtonGridState extends State<ButtonGrid> {
               // print(widget.myGameBoard.getGrid());
             });
           },
+          font: 0.075,
         );
       },
     );

@@ -10,17 +10,20 @@ class AppButtons extends StatelessWidget {
   IconData? icon;
   double width;
   double height;
-  AppButtons(
-      {super.key,
-      required this.foregroundColor,
-      required this.backgroundColor,
-      required this.borderColor,
-      required this.text,
-      required this.width,
-      required this.height,
-      this.icon,
-      required this.borderRadius,
-      required this.onPressed});
+  double font;
+  AppButtons({
+    super.key,
+    required this.foregroundColor,
+    required this.backgroundColor,
+    required this.borderColor,
+    required this.text,
+    required this.width,
+    required this.height,
+    this.icon,
+    required this.borderRadius,
+    required this.onPressed,
+    required this.font,
+  });
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -54,7 +57,7 @@ class AppButtons extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 0.04 * MediaQuery.of(context).size.height,
+              fontSize: font * MediaQuery.of(context).size.height,
             ),
           ),
         ),
