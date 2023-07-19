@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppButtons extends StatelessWidget {
   final Color foregroundColor;
-  final Color backgroundColor;
+  Color backgroundColor;
   final Color borderColor;
   final String text;
   final int borderRadius;

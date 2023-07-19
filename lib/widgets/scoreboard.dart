@@ -5,7 +5,7 @@ import 'app_button.dart';
 
 class Scoreboard extends StatefulWidget {
   GameBoard myGameBoard;
-  final String turn;
+  String turn;
   Scoreboard({super.key, required this.myGameBoard, required this.turn});
 
   @override
@@ -19,8 +19,12 @@ class _ScoreboardState extends State<Scoreboard> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AppButtons(
-          foregroundColor: Colors.purple[200]!,
-          backgroundColor: Color(0xFF757575),
+          foregroundColor: widget.myGameBoard.getTurn() == "X"
+              ? Colors.red[300]!
+              : Colors.purple[200]!,
+          backgroundColor: widget.myGameBoard.getTurn() == "X"
+              ? Color(0xFF9E9E9E)
+              : Color(0xFF757575),
           borderColor: Colors.black,
           text: "X: ${widget.myGameBoard.getXScore()}",
           width: 130,
@@ -48,8 +52,12 @@ class _ScoreboardState extends State<Scoreboard> {
         ),
         // Padding(padding: EdgeInsets.all(15)),
         AppButtons(
-          foregroundColor: Colors.purple[200]!,
-          backgroundColor: Color(0xFF757575),
+          foregroundColor: widget.myGameBoard.getTurn() == "O"
+              ? Colors.red[300]!
+              : Colors.purple[200]!,
+          backgroundColor: widget.myGameBoard.getTurn() == "O"
+              ? Color(0xFF9E9E9E)
+              : Color(0xFF757575),
           borderColor: Colors.black,
           text: "O: ${widget.myGameBoard.getOScore()}",
           width: 130,
