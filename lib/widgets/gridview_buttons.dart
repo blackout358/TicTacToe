@@ -36,8 +36,8 @@ class _ButtonGridState extends State<ButtonGrid> {
       ),
       itemBuilder: (BuildContext context, int index) {
         return AppButtons(
-          foregroundColor: Colors.red,
-          backgroundColor: Colors.grey[300]!,
+          foregroundColor: Colors.white,
+          backgroundColor: Color(0xFF757575),
           borderColor: Colors.black,
           text: widget.myGameBoard.getGridValue(index),
           width: 10,

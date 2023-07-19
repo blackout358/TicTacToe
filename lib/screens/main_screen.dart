@@ -97,6 +97,7 @@ class _MainScreenState extends State<MainScreen> {
           //     ),
           //   ],
           // ),
+          Padding(padding: EdgeInsets.all(4)),
           WinnerText(myGameBoard: myGameBoard, winner: winner),
         ],
       ),

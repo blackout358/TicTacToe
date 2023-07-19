@@ -19,8 +19,8 @@ class _ScoreboardState extends State<Scoreboard> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AppButtons(
-          foregroundColor: Colors.red,
-          backgroundColor: Colors.white,
+          foregroundColor: Colors.purple[200]!,
+          backgroundColor: Color(0xFF757575),
           borderColor: Colors.black,
           text: "X: ${widget.myGameBoard.getXScore()}",
           width: 130,
@@ -33,8 +33,8 @@ class _ScoreboardState extends State<Scoreboard> {
           },
         ),
         AppButtons(
-          foregroundColor: Colors.red,
-          backgroundColor: Colors.white,
+          foregroundColor: Colors.purple[200]!,
+          backgroundColor: Color(0xFF757575),
           borderColor: Colors.black,
           text: widget.myGameBoard.getTurn(),
           width: 90,
@@ -48,8 +48,8 @@ class _ScoreboardState extends State<Scoreboard> {
         ),
         // Padding(padding: EdgeInsets.all(15)),
         AppButtons(
-          foregroundColor: Colors.red,
-          backgroundColor: Colors.white,
+          foregroundColor: Colors.purple[200]!,
+          backgroundColor: Color(0xFF757575),
           borderColor: Colors.black,
           text: "O: ${widget.myGameBoard.getOScore()}",
           width: 130,

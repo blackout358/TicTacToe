@@ -22,7 +22,7 @@ class _WinnerTextState extends State<WinnerText> {
       widget.myGameBoard.getWinner(),
       style: TextStyle(
         fontSize: 50,
-        color: Colors.blue[400],
+        color: Colors.purple[200]!,
       ),
     );
   }

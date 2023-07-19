@@ -16,6 +16,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Color(0xFF757575),
       leading: Icon(Icons.gamepad_rounded),
       title: const Text("Tic Tac Toe"),
       centerTitle: true,
