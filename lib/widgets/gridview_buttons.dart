@@ -54,6 +54,7 @@ class _ButtonGridState extends State<ButtonGrid> {
               }
               widget.myGameBoard.setXO(index);
               var didWin = widget.myGameBoard.isWinner();
+              widget.updateWinner(widget.winner);
               print(widget.myGameBoard.getGrid());
               if (didWin) {
                 hasWon = true;
