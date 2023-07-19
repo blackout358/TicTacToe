@@ -1,6 +1,7 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:tictactoe/logic/gameboard.dart';
-import 'package:tictactoe/widgets/app_button.dart';
 import 'package:tictactoe/widgets/scoreboard.dart';
 import 'package:tictactoe/widgets/winner_text.dart';
 import '../widgets/gridview_buttons.dart';
@@ -39,7 +40,6 @@ class _MainScreenState extends State<MainScreen> {
               turn: turn,
               onPressed: () {},
               displayXO: displayXO,
-              winner: winner,
               myGameBoard: myGameBoard,
               updateWinner: updateWinner,
             ),
@@ -48,56 +48,7 @@ class _MainScreenState extends State<MainScreen> {
             myGameBoard: myGameBoard,
             turn: turn,
           ),
-          // Row(
-          //   // crossAxisAlignment: CrossAxisAlignment.center,
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     AppButtons(
-          //       foregroundColor: Colors.red,
-          //       backgroundColor: Colors.white,
-          //       borderColor: Colors.black,
-          //       text: "X",
-          //       width: 90,
-          //       height: 90,
-          //       borderRadius: 15,
-          //       onPressed: () {
-          //         setState(() {
-          //           turn = "X";
-          //         });
-          //       },
-          //     ),
-          //     AppButtons(
-          //       foregroundColor: Colors.red,
-          //       backgroundColor: Colors.white,
-          //       borderColor: Colors.black,
-          //       text: turn,
-          //       width: 90,
-          //       height: 90,
-          //       borderRadius: 15,
-          //       onPressed: () {
-          //         setState(() {
-          //           myGameBoard.clearBoard();
-          //           myGameBoard.setWinner("");
-          //           updateWinner("");
-          //         });
-          //       },
-          //     ),
-          //     AppButtons(
-          //       foregroundColor: Colors.red,
-          //       backgroundColor: Colors.white,
-          //       borderColor: Colors.black,
-          //       text: "O",
-          //       width: 90,
-          //       height: 90,
-          //       borderRadius: 15,
-          //       onPressed: () {
-          //         print("myGameBoard: ${myGameBoard.getWinner()}");
-          //         print("Winner: $winner");
-          //       },
-          //     ),
-          //   ],
-          // ),
-          Padding(padding: EdgeInsets.all(4)),
+          const Padding(padding: EdgeInsets.all(4)),
           WinnerText(myGameBoard: myGameBoard, winner: winner),
         ],
       ),

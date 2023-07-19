@@ -97,9 +97,7 @@ class GameBoard {
     winner = victor;
   }
 
-  String getWinner() {
-    return winner;
-  }
+  String getWinner() => winner;
 
   void updateScore(String victor) {
     victor == "X" ? xScore++ : oScore++;

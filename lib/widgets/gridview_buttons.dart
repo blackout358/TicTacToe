@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/logic/gameboard.dart';
-import 'package:tictactoe/logic/win_checker.dart';
 import 'package:tictactoe/widgets/app_button.dart';
 
 class ButtonGrid extends StatefulWidget {
   final VoidCallback onPressed;
-  String turn;
-  String winner;
-  List<String> displayXO;
-  GameBoard myGameBoard;
+  final String turn;
+  final List<String> displayXO;
+  final GameBoard myGameBoard;
   final Function(String) updateWinner;
-  ButtonGrid({
+  const ButtonGrid({
     super.key,
     required this.turn,
     required this.onPressed,
     required this.displayXO,
-    required this.winner,
     required this.myGameBoard,
     required this.updateWinner,
   });
@@ -37,7 +34,7 @@ class _ButtonGridState extends State<ButtonGrid> {
       itemBuilder: (BuildContext context, int index) {
         return AppButtons(
           foregroundColor: Colors.white,
-          backgroundColor: Color(0xFF757575),
+          backgroundColor: const Color(0xFF757575),
           borderColor: Colors.black,
           text: widget.myGameBoard.getGridValue(index),
           width: 10,
@@ -48,22 +45,16 @@ class _ButtonGridState extends State<ButtonGrid> {
               if (hasWon) {
                 widget.myGameBoard.clearBoard();
                 widget.myGameBoard.setWinner("");
-                widget.updateWinner(widget.winner);
-                widget.winner = "";
+                widget.updateWinner(widget.myGameBoard.getWinner());
                 hasWon = !hasWon;
               }
               widget.myGameBoard.setXO(index);
               var didWin = widget.myGameBoard.isWinner();
-              widget.updateWinner(widget.winner);
-              print(widget.myGameBoard.getGrid());
+              widget.updateWinner(widget.myGameBoard.getWinner());
               if (didWin) {
                 hasWon = true;
-                widget.winner = widget.myGameBoard.getWinner();
-                widget.updateWinner(widget.winner);
-                print("myGameBoard: ${widget.myGameBoard.getWinner()}");
-                print("Winner: ${widget.winner}");
+                widget.updateWinner(widget.myGameBoard.getWinner());
               }
-              // print(widget.myGameBoard.getGrid());
             });
           },
           font: 0.075,

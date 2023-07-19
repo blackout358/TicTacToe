@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  CustomAppBar({Key? key})
-      : preferredSize = Size.fromHeight(kToolbarHeight),
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({Key? key})
+      : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
   @override
   final Size preferredSize; // default is 56.0
 
   @override
-  _CustomAppBarState createState() => _CustomAppBarState();
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
-  @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xFF757575),
-      leading: Icon(Icons.gamepad_rounded),
+      backgroundColor: const Color(0xFF757575),
+      leading: const Icon(Icons.gamepad_rounded),
       title: const Text("Tic Tac Toe"),
       centerTitle: true,
     );

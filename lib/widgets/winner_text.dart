@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../logic/gameboard.dart';
 
 class WinnerText extends StatefulWidget {
-  GameBoard myGameBoard;
-  String winner;
-  WinnerText({
+  final GameBoard myGameBoard;
+  final String winner;
+  const WinnerText({
     super.key,
     required this.myGameBoard,
     required this.winner,

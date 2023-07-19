@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class AppButtons extends StatelessWidget {
   final Color foregroundColor;
-  Color backgroundColor;
+  final Color backgroundColor;
   final Color borderColor;
   final String text;
   final int borderRadius;
   final VoidCallback onPressed;
-  IconData? icon;
-  double width;
-  double height;
-  double font;
-  AppButtons({
+  final IconData? icon;
+  final double width;
+  final double height;
+  final double font;
+  const AppButtons({
     super.key,
     required this.foregroundColor,
     required this.backgroundColor,
@@ -30,9 +30,7 @@ class AppButtons extends StatelessWidget {
       width: width,
       height: height,
       child: Container(
-        margin: EdgeInsets.all(5),
-        // width: width,
-        // height: height,
+        margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(borderRadius.toDouble()),
@@ -44,7 +42,6 @@ class AppButtons extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            // minimumSize: Size.fromWidth(width).height(height),
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
             foregroundColor: foregroundColor,
